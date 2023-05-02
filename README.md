@@ -29,23 +29,27 @@ This scraper is under active development. If you have any feature requests you c
 
 ## Input Parameters
 
-The input of this scraper should be JSON containing the list of pages on Allrecipes that should be visited. Required fields are:
+The input of this scraper should be JSON containing the list of pages on Allrecipes that should be visited. Possible fields are:
 
-| Field                | Type    | Description                                                                                                                                                                                                    |
-| -------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| search               | String  | (optional) Keyword that you want to search on Allrecipes.                                                                                                                                                       |
-| includedKeywords               | Array  | (optional) Ingredients or keywords that you want to include.                                                                                                                                                       |
-| excludedKeywords               | Array  | (optional) Ingredients or keywords that you want to exclude.                                                                                                                                                       |
-| startUrls            | Array   | (optional) List of Allrecipes URLs. You should only provide recipe list, search, author, user, recipe detail, collection, gallery and article URLs                                                                                                                 |
-| endPage              | Integer | (optional) Final number of page that you want to scrape. Default is `Infinite`. This is applies to all `search` request and `startUrls` individually.                                                          |
-| maxItems             | Integer | (optional) You can limit scraped items. This should be useful when you search through the big subcategories.                                                                                                |
-| proxy                | Object  | Proxy configuration                                                                                                                                                                                            |
-| extendOutputFunction | String  | (optional) Function that takes a JQuery handle ($) as argument and returns object with data                                                                                                                    |
-| customMapFunction | String  | (optional) Function that takes each objects handle as argument and returns object with executing the function                                                                                                                     |
+- `search`: (Optional) (String) Keyword that you want to search on Allrecipes.
+
+- `startUrls`: (Optional) (Array) List of Allrecipes URLs. You should only provide recipe list, search, author, user, recipe detail, collection, gallery and article URLs.
+
+- `includeReviews`: (Optional) (Boolean) This will add all the reviews that XXXXX provides into the detail objects. Please keep in mind that the time and resources the actor uses will increase proportionally by the number of reviews.
+
+- `endPage`: (Optional) (Number) Final number of page that you want to scrape. Default is `Infinite`. This is applies to all `search` request and `startUrls` individually.
+
+- `maxItems`: (Optional) (Number) You can limit scraped items. This should be useful when you search through the big lists or search results.
+
+- `proxy`: (Required) (Proxy Object) Proxy configuration.
+
+- `extendOutputFunction`: (Optional) (String) Function that takes a JQuery handle ($) as argument and returns object with data.
+
+- `customMapFunction`: (Optional) (String) Function that takes each objects handle as argument and returns object with executing the function.
 
 This solution requires the use of **Proxy servers**, either your own proxy servers or you can use [Apify Proxy](https://www.apify.com/docs/proxy).
 
-##### Tip
+### Tip
 
 When you want to have a scrape over a specific item URL, just copy and paste the link as one of the **startUrl**.
 
@@ -74,8 +78,6 @@ The actor optimized to run blazing fast and scrape many as items as possible. Th
     "useApifyProxy": true
   },
   "search": "cucumber",
-  "includedKeywords":["salad"],
-  "excludedKeywords":["onion"],
   "maxItems": 50,
   "endPage": 20
 }
@@ -103,223 +105,77 @@ The structure of each item in Allrecipes looks like this:
 
 ```json
 {
-  "url": "https://www.allrecipes.com/recipe/261911/chef-johns-croissants/",
-  "name": "Chef John's Croissants",
-  "breadcrumbs": [
-    "Bread",
-    "Yeast Bread Recipes"
-  ],
-  "rating": "4.5",
-  "summary": "I wouldn't describe making homemade croissants as easy since there are multiple steps, and it does take at least half a day. But it's really not that hard either; and certainly simpler than flying to Paris, which is the only other way to enjoy these amazing pastries. This recipe was adapted from one by Bruno Albouze, from The Real Deal (which he is).",
-  "reviews": "",
-  "photos": [
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2020%2F02%2FMorel-Mushrooms-by-Kevin-Miyazaki-2000.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2014%2F12%2F395820-Rhubarb-and-Strawberry-Pie-Photo-by-CookinBug-650x465.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2020%2F04%2F27%2Fraspberry-almond-coffeecake.jpeg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2020%2F02%2Fcreamy-strawberry-crepes.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2020%2F12%2F16%2F8792389_korean-street-toast_chef-john-2000.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F04%2F07%2FSalad-Ingredients-2000.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2019%2F12%2F5205125.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2021%2F07%2F21%2F151075-herb-buttermilk-biscuits-naples34102.jpeg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2020%2F02%2F4511165-2000.jpg",
-    "/img/icons/generic-recipe.svg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2020%2F07%2F27%2FScreen-Shot-2020-07-27-at-10.42.25-AM.png",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F04%2F01%2FGettyImages-677135427-2000.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F03%2F09%2F81108-classic-macaroni-salad-mfs-034.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2020%2F07%2F31%2FLemon-Chicken-Orzo-Soup.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F03%2F22%2F3022266-saltine-toffee-cookies-photo-by-sporkism.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F01%2F13%2FGettyImages-1249377035.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2021%2F02%2F24%2F280504-mediterranean-orzo-salad-kims-cooking-now-2000.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2021%2F05%2F20%2F102189514_korean-barbecue-with-bachan_allrecipes-2000.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F03%2F22%2Fhow-to-host-your-first-dinner-party-2x1-102709103.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F01%2F20%2FGettyImages-1358089502-2000.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F9135335.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F9011803.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F8765419.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F8732830.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F4674617.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fmobile%2Fallrecipes%2Fimages%2Ficon-user-default_v2.png",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F5499721.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F6143666.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F6036163.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F7826687.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F6864562.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F6497561.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F5311132.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F7496757.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F6966693.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F8076003.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F6751311.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F8031258.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F6571769.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F5202780.jpg",
-    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fwww.allrecipes.com%2Fimg%2Fmisc%2F300x250_magazines_and_more.jpg"
-  ],
-  "author": {
-    "name": ""
-  },
-  "cook": "25 mins",
-  "additional": "3 hrs",
-  "total": "3 hrs 55 mins",
-  "prep": "30 mins",
-  "Servings": "8",
-  "Yield": "12 to 16 croissants",
-  "ingredients": [
-    "1 cup warm water (100 degrees F or 38 degrees C)",
-    "1 (.25 ounce) package active dry yeast",
-    "¼ cup granulated white sugar",
-    "3 ½ cups unbleached bread flour",
-    "3 teaspoons kosher salt",
-    "6 tablespoons butter, room temperature, cut into pieces",
-    "2 sticks unsalted European-style butter",
-    "1 egg",
-    "1 tablespoon water"
-  ],
-  "directions": [
-    {
-      "name": "Step 1",
-      "description": "Place warm water in the bowl of a stand mixer. Sprinkle with yeast. Let yeast dissolve for 10 minutes. Add sugar and bread flour. Sprinkle with salt; add 6 tablespoons butter. Attach the bowl to the stand mixer. Mix dough with the dough hook just until butter is completely kneaded in and the dough forms a ball and pulls away cleanly from the sides of the bowl, 3 or 4 minutes."
-    },
-    {
-      "name": "Step 2",
-      "description": "Transfer dough to a work surface and form into a semi-smooth ball. Place dough back in the mixer bowl; cover. Let rise in a warm spot until doubled, about 2 hours."
-    },
-    {
-      "name": "Step 3",
-      "description": "Transfer dough to a lightly floured work surface. Push and press dough to deflate it, and form it into a rectangle. Fold into thirds by lifting one end over the middle third, and folding the other side onto the middle. Wrap in plastic wrap. Place on a rimmed baking sheet lined with a silicone mat. Refrigerate until chilled through, about 1 hour."
-    },
-    {
-      "name": "Step 4",
-      "description": "Cut 2 sticks butter in half lengthwise and place slightly apart from each other on a length of parchment paper long enough to fold over the butter. Fold the parchment paper over the butter. Press butter down. Roll out with a rolling pin to a square about 8x8 inches. Refrigerate until a little chilled and just barely flexible, 10 or 15 minutes."
-    },
-    {
-      "name": "Step 5",
-      "description": "Roll dough out into a rectangle slightly wider than the butter slab and just over twice as long. Place butter on one half of the dough leaving about 1 inch margin from the edge of the dough. Fold the other half of the dough over the butter. Dust work surface and dough with flour as needed."
-    },
-    {
-      "name": "Step 6",
-      "description": "Press rolling pin down on dough to create ridges. Then roll out the ridges. Repeat this process. Keep pressing and rolling until dough is about the same size rectangle as you had before you folded it in half, dusting with just a bit of flour as necessary."
-    },
-    {
-      "name": "Step 7",
-      "description": "Starting from the short side, fold one-third of dough over middle third. Then fold the other end over to form a small rectangle. Flatten out just slightly with rolling pin. Transfer to the silicone-lined baking sheet; cover with plastic wrap. Refrigerate until chilled, about 30 minutes."
-    },
-    {
-      "name": "Step 8",
-      "description": "Transfer dough back to work surface and repeat pressing and rolling technique until dough is the size of the previous larger rectangle. Fold into thirds again, starting from the short side. Press and roll slightly. Transfer back to lined baking sheet. Cover and refrigerate about 15 minutes."
-    },
-    {
-      "name": "Step 9",
-      "description": "Roll back out to a large rectangle. This time, fold dough in half. Then press and roll out into a 1/2-inch thick rectangle, using as little flour as needed to keep dough from sticking."
-    },
-    {
-      "name": "Step 10",
-      "description": "Cut dough in half lengthwise using a pastry wheel or pizza cutter. Dust one piece with flour and roll out to a rectangle about 1/4 to 1/8 inch thick. Starting from one corner, cut the dough diagonally crosswise into 8 triangles using a pastry wheel. Starting with the bottom end of each triangle, roll each up toward the tip to form the croissant with the seam at the bottom. If necessary, use a bit of water to seal the tip to the rolled croissant."
-    },
-    {
-      "name": "Step 11",
-      "description": "Repeat with the other half of the dough."
-    },
-    {
-      "name": "Step 12",
-      "description": "Place shaped croissants on baking sheets lined with silicone mats. Whisk together egg and 1 tablespoon water to make the egg wash. Brush croissants with egg wash. Place in a warm area to allow them to rise, about 45 to 60 minutes."
-    },
-    {
-      "name": "Step 13",
-      "description": "Preheat oven to 400 degrees F (200 degrees C). Brush croissants gently but thoroughly again with egg wash."
-    },
-    {
-      "name": "Step 14",
-      "description": "Bake in preheated oven until beautifully browned, about 25 minutes. Transfer to a cooling rack. Cool to room temperature before serving."
-    }
-  ],
-  "nutritionFacts": [
-    {
-      "name": "protein",
-      "value": "8.6g",
-      "dailyValue": "17 %"
-    },
-    {
-      "name": "carbohydrates",
-      "value": "50.1g",
-      "dailyValue": "16 %"
-    },
-    {
-      "name": "dietary fiber",
-      "value": "1.6g",
-      "dailyValue": "7 %"
-    },
-    {
-      "name": "sugars",
-      "value": "6.5g",
-      "dailyValue": ""
-    },
-    {
-      "name": "fat",
-      "value": "33.3g",
-      "dailyValue": "51 %"
-    },
-    {
-      "name": "saturated fat",
-      "value": "20.4g",
-      "dailyValue": "102 %"
-    },
-    {
-      "name": "cholesterol",
-      "value": "107.1mg",
-      "dailyValue": "36 %"
-    },
-    {
-      "name": "vitamin a iu",
-      "value": "1006.3IU",
-      "dailyValue": "20 %"
-    },
-    {
-      "name": "niacin equivalents",
-      "value": "6.6mg",
-      "dailyValue": "51 %"
-    },
-    {
-      "name": "folate",
-      "value": "134.3mcg",
-      "dailyValue": "34 %"
-    },
-    {
-      "name": "calcium",
-      "value": "23.2mg",
-      "dailyValue": "2 %"
-    },
-    {
-      "name": "iron",
-      "value": "2.9mg",
-      "dailyValue": "16 %"
-    },
-    {
-      "name": "magnesium",
-      "value": "17.7mg",
-      "dailyValue": "6 %"
-    },
-    {
-      "name": "potassium",
-      "value": "95.6mg",
-      "dailyValue": "3 %"
-    },
-    {
-      "name": "sodium",
-      "value": "795.8mg",
-      "dailyValue": "32 %"
-    },
-    {
-      "name": "thiamin",
-      "value": "0.5mg",
-      "dailyValue": "51 %"
-    },
-    {
-      "name": "calories from fat",
-      "value": "299.6",
-      "dailyValue": ""
-    }
-  ]
+	"url": "https://www.allrecipes.com/recipe/261911/chef-johns-croissants/",
+	"scrapedType": "recipe",
+	"title": "Chef John's Croissants",
+	"breadcrumbs": [
+		"Bread",
+		"Yeast Bread Recipes"
+	],
+	"rating": "4.5",
+	"author": {
+		"name": "Chef John",
+		"url": "https://www.allrecipes.com/cook/foodwisheswithchefjohn"
+	},
+	"summary": "I wouldn't describe making homemade croissants as easy since there are multiple steps, and it does take at least half a day. But it's really not that hard either; and certainly simpler than flying to Paris, which is the only other way to enjoy these amazing pastries. This croissant recipe, with a helpful video, was adapted from one by Bruno Albouze, from The Real Deal (which he is).",
+	"reviews": "",
+	"photos": [
+		"https://imagesvc.meredithcorp.io/v3/mm/image?url=https://images.media-allrecipes.com/userphotos/9135335.jpg&q=60&c=sc&orient=true&w=160&poi=auto&h=90",
+		"https://imagesvc.meredithcorp.io/v3/mm/image?url=https://images.media-allrecipes.com/userphotos/9011803.jpg&q=60&c=sc&orient=true&w=160&poi=auto&h=90",
+		"https://imagesvc.meredithcorp.io/v3/mm/image?url=https://images.media-allrecipes.com/userphotos/8765419.jpg&q=60&c=sc&orient=true&w=160&poi=auto&h=90",
+		"https://imagesvc.meredithcorp.io/v3/mm/image?url=https://images.media-allrecipes.com/userphotos/8732830.jpg&q=60&c=sc&orient=true&w=160&poi=auto&h=90"
+	],
+	"Prep Time": "30 mins",
+	"Cook Time": "25 mins",
+	"Additional Time": "3 hrs",
+	"Total Time": "3 hrs 55 mins",
+	"Servings": "8",
+	"Yield": "12\nto 16 croissants",
+	"ingredients": [
+		"1 cup warm water (100 degrees F or 38 degrees C)",
+		"1 (.25 ounce) package active dry yeast",
+		"¼ cup granulated white sugar",
+		"3 ½ cups unbleached bread flour",
+		"3 teaspoons kosher salt",
+		"6 tablespoons butter, room temperature, cut into pieces",
+		"2 sticks unsalted European-style butter",
+		"1  egg",
+		"1 tablespoon water"
+	],
+	"directions": [
+		"Place warm water in the bowl of a stand mixer. Sprinkle with yeast. Let yeast dissolve for 10 minutes. Add sugar and bread flour. Sprinkle with salt; add 6 tablespoons butter. Attach the bowl to the stand mixer. Mix dough with the dough hook just until butter is completely kneaded in and the dough forms a ball and pulls away cleanly from the sides of the bowl, 3 or 4 minutes.",
+		"Transfer dough to a work surface and form into a semi-smooth ball. Place dough back in the mixer bowl; cover. Let rise in a warm spot until doubled, about 2 hours.",
+		"Transfer dough to a lightly floured work surface. Push and press dough to deflate it, and form it into a rectangle. Fold into thirds by lifting one end over the middle third, and folding the other side onto the middle. Wrap in plastic wrap. Place on a rimmed baking sheet lined with a silicone mat. Refrigerate until chilled through, about 1 hour.",
+		"Cut 2 sticks butter in half lengthwise and place slightly apart from each other on a length of parchment paper long enough to fold over the butter. Fold the parchment paper over the butter. Press butter down. Roll out with a rolling pin to a square about 8x8 inches. Refrigerate until a little chilled and just barely flexible, 10 or 15 minutes.",
+		"Roll dough out into a rectangle slightly wider than the butter slab and just over twice as long. Place butter on one half of the dough leaving about a 1-inch margin from the edge of the dough. Fold the other half of the dough over the butter. Dust work surface and dough with flour as needed.",
+		"Press rolling pin down on dough to create ridges. Then roll out the ridges. Repeat this process. Keep pressing and rolling until dough is about the same size rectangle as you had before you folded it in half, dusting with just a bit of flour as necessary.",
+		"Starting from the short side, fold one-third of dough over middle third. Then fold the other end over to form a small rectangle. Flatten out just slightly with rolling pin. Transfer to the silicone-lined baking sheet; cover with plastic wrap. Refrigerate until chilled, about 30 minutes.",
+		"Transfer dough back to work surface and repeat pressing and rolling technique until dough is the size of the previous larger rectangle. Fold into thirds again, starting from the short side. Press and roll slightly. Transfer back to lined baking sheet. Cover and refrigerate about 15 minutes.",
+		"Roll back out to a large rectangle. This time, fold dough in half. Then press and roll out into a 1/2-inch thick rectangle, using as little flour as needed to keep dough from sticking.",
+		"Cut dough in half lengthwise using a pastry wheel or pizza cutter. Dust one piece with flour and roll out to a rectangle about 1/4 to 1/8 inch thick. Starting from one corner, cut the dough diagonally crosswise into 8 triangles using a pastry wheel. Starting with the bottom end of each triangle, roll each up toward the tip to form the croissant with the seam at the bottom. If necessary, use a bit of water to seal the tip to the rolled croissant.",
+		"Repeat with the other half of the dough.",
+		"Place shaped croissants on baking sheets lined with silicone mats. Whisk together egg and 1 tablespoon water to make the egg wash. Brush croissants with egg wash. Place in a warm area to allow them to rise, about 45 to 60 minutes.",
+		"Preheat the oven to 400 degrees F (200 degrees C). Brush croissants gently but thoroughly again with egg wash.",
+		"Bake in the preheated oven until beautifully browned, about 25 minutes. Transfer to a cooling rack. Cool to room temperature before serving.\n\n\n\n\n\n\n<img\nsrc=\"https://www.allrecipes.com/thmb/LPBETDhgapnhj182dYjLon--Svo=/2250x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/4674617-254ac8be197f4192800fd6f2eecacc4b.jpg\"\nwidth=\"2500\"\nheight=\"1667\"\nclass=\"img--noscript universal-image__image\"\n/>"
+	],
+	"nutritionFacts": [
+		{
+			"name": "Calories",
+			"value": "532"
+		},
+		{
+			"name": "Fat",
+			"value": "33g"
+		},
+		{
+			"name": "Carbs",
+			"value": "50g"
+		},
+		{
+			"name": "Protein",
+			"value": "9g"
+		}
+	]
 }
 ```
 
