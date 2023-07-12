@@ -1,8 +1,10 @@
+[https://apify.com/epctex/allrecipes-advanced-scraper](https://apify.com/epctex/allrecipes-advanced-scraper?fpr=yhdrb)
+
 # Actor - Allrecipes Advanced Scraper
 
 ## Allrecipes Advanced scraper
 
-Since Allrecipes doesn't provide a good and free API, this actor should help you to retrieve data from it. This actor can provide you very detailed
+Since Allrecipes doesn't provide a good and free API, this actor should help you to retrieve data from it. This actor can provide you with very detailed
 
 The Allrecipes Advanced data scraper supports the following features:
 
@@ -12,18 +14,18 @@ The Allrecipes Advanced data scraper supports the following features:
 
 -   Scrape recipes - Scrape any recipes in a very detailed and structured from Allrecipes.
 
--   Scrape articles - Fetch any articles that has been published from Allrecipes.
+-   Scrape articles - Fetch any articles that have been published from Allrecipes.
 
 -   Scrape galleries - You can scrape any gallery that you need. It is structured and provides all the slides.
 
--   Scrape authors and users - If you want to scrape the data of a specific author or user, you can just provide it and Allrecipes Advanced scraper will do the rest.
+-   Scrape authors and users - If you want to scrape the data of a specific author or user, you can just provide it and Allrecipes Advanced Scraper will do the rest.
 
--   Scrape collections - You can scrape user-generated collections and all of its recipes.
+-   Scrape collections - You can scrape user-generated collections and all of their recipes.
 
 ## What are the advantages of this actor compared to others?
-This actor is extremely optimized, very fast and provides at least 5x more data than the other actors or projects that you might experienced.
+This actor is extremely optimized, very fast, and provides at least 5x more data than the other actors or projects that you might experience.
 
-## Bugs, fixes, updates and changelog
+## Bugs, fixes, updates, and changelog
 
 This scraper is under active development. If you have any feature requests you can create an issue from [here](https://github.com/epctex/allrecipes-advanced-scraper/issues).
 
@@ -33,19 +35,19 @@ The input of this scraper should be JSON containing the list of pages on Allreci
 
 - `search`: (Optional) (String) Keyword that you want to search on Allrecipes.
 
-- `startUrls`: (Optional) (Array) List of Allrecipes URLs. You should only provide recipe list, search, author, user, recipe detail, collection, gallery and article URLs.
+- `startUrls`: (Optional) (Array) List of Allrecipes URLs. You should only provide a recipe list, search, author, user, recipe detail, collection, gallery, and article URLs.
 
-- `includeReviews`: (Optional) (Boolean) This will add all the reviews that XXXXX provides into the detail objects. Please keep in mind that the time and resources the actor uses will increase proportionally by the number of reviews.
+- `includeReviews`: (Optional) (Boolean) This will add all the reviews that Allrecipes provides into the detail objects. Please keep in mind that the time and resources the actor uses will increase proportionally by the number of reviews.
 
-- `endPage`: (Optional) (Number) Final number of page that you want to scrape. Default is `Infinite`. This is applies to all `search` request and `startUrls` individually.
+- `endPage`: (Optional) (Number) Final number of page that you want to scrape. The default is `Infinite`. This applies to all `search` request and `startUrls` individually.
 
 - `maxItems`: (Optional) (Number) You can limit scraped items. This should be useful when you search through the big lists or search results.
 
 - `proxy`: (Required) (Proxy Object) Proxy configuration.
 
-- `extendOutputFunction`: (Optional) (String) Function that takes a JQuery handle ($) as argument and returns object with data.
+- `extendOutputFunction`: (Optional) (String) Function that takes a JQuery handle ($) as an argument and returns an object with data.
 
-- `customMapFunction`: (Optional) (String) Function that takes each objects handle as argument and returns object with executing the function.
+- `customMapFunction`: (Optional) (String) Function that takes each object's handle as an argument and returns the object with executing the function.
 
 This solution requires the use of **Proxy servers**, either your own proxy servers or you can use [Apify Proxy](https://www.apify.com/docs/proxy).
 
@@ -55,11 +57,11 @@ When you want to have a scrape over a specific item URL, just copy and paste the
 
 If you would like to scrape only the first page of a list then put the link for the page and have the `endPage` as 1.
 
-With the last approach that explained above you can also fetch any interval of pages. If you provide the 5th page of a list and define the `endPage` parameter as 6 then you'll have the 5th and 6th pages only.
+With the last approach that is explained above you can also fetch any interval of pages. If you provide the 5th page of a list and define the `endPage` parameter as 6 then you'll have the 5th and 6th pages only.
 
 ### Compute Unit Consumption
 
-The actor optimized to run blazing fast and scrape many as items as possible. Therefore, it forefronts all item detail requests. If actor doesn't block very often it'll scrape 100 items in 1 minute with ~0.01-0.04 compute units.
+The actor is optimized to run blazing fast and scrape many items as possible. Therefore, it forefronts all item detail requests. If the actor doesn't block very often it'll scrape 100 items in 1 minute with ~0.01-0.04 compute units.
 
 ### Allrecipes Advanced Scraper Input example
 
@@ -89,13 +91,13 @@ The actor optimized to run blazing fast and scrape many as items as possible. Th
 During the run, the actor will output messages letting you know what is going on. Each message always contains a short label specifying which page from the provided list is currently specified.
 When items are loaded from the page, you should see a message about this event with a loaded item count and total item count for each page.
 
-If you provide incorrect input to the actor, it will immediately stop with failure state and output an explanation of what is wrong.
+If you provide incorrect input to the actor, it will immediately stop with a failure state and output an explanation of what is wrong.
 
 ## Allrecipes Export
 
 During the run, the actor stores results into a dataset. Each item is a separate item in the dataset.
 
-You can manage the results in any languague (Python, PHP, Node JS/NPM). See the FAQ or <a href="https://www.apify.com/docs/api" target="blank">our API reference</a> to learn more about getting results from this Allrecipes Advanced actor.
+You can manage the results in any language (Python, PHP, Node JS/NPM). See the FAQ or <a href="https://www.apify.com/docs/api" target="blank">our API reference</a> to learn more about getting results from this Allrecipes Advanced actor.
 
 ## Scraped Allrecipes Output
 
@@ -105,77 +107,77 @@ The structure of each item in Allrecipes looks like this:
 
 ```json
 {
-	"url": "https://www.allrecipes.com/recipe/261911/chef-johns-croissants/",
-	"scrapedType": "recipe",
-	"title": "Chef John's Croissants",
-	"breadcrumbs": [
-		"Bread",
-		"Yeast Bread Recipes"
-	],
-	"rating": "4.5",
-	"author": {
-		"name": "Chef John",
-		"url": "https://www.allrecipes.com/cook/foodwisheswithchefjohn"
-	},
-	"summary": "I wouldn't describe making homemade croissants as easy since there are multiple steps, and it does take at least half a day. But it's really not that hard either; and certainly simpler than flying to Paris, which is the only other way to enjoy these amazing pastries. This croissant recipe, with a helpful video, was adapted from one by Bruno Albouze, from The Real Deal (which he is).",
-	"reviews": "",
-	"photos": [
-		"https://imagesvc.meredithcorp.io/v3/mm/image?url=https://images.media-allrecipes.com/userphotos/9135335.jpg&q=60&c=sc&orient=true&w=160&poi=auto&h=90",
-		"https://imagesvc.meredithcorp.io/v3/mm/image?url=https://images.media-allrecipes.com/userphotos/9011803.jpg&q=60&c=sc&orient=true&w=160&poi=auto&h=90",
-		"https://imagesvc.meredithcorp.io/v3/mm/image?url=https://images.media-allrecipes.com/userphotos/8765419.jpg&q=60&c=sc&orient=true&w=160&poi=auto&h=90",
-		"https://imagesvc.meredithcorp.io/v3/mm/image?url=https://images.media-allrecipes.com/userphotos/8732830.jpg&q=60&c=sc&orient=true&w=160&poi=auto&h=90"
-	],
-	"Prep Time": "30 mins",
-	"Cook Time": "25 mins",
-	"Additional Time": "3 hrs",
-	"Total Time": "3 hrs 55 mins",
-	"Servings": "8",
-	"Yield": "12\nto 16 croissants",
-	"ingredients": [
-		"1 cup warm water (100 degrees F or 38 degrees C)",
-		"1 (.25 ounce) package active dry yeast",
-		"¼ cup granulated white sugar",
-		"3 ½ cups unbleached bread flour",
-		"3 teaspoons kosher salt",
-		"6 tablespoons butter, room temperature, cut into pieces",
-		"2 sticks unsalted European-style butter",
-		"1  egg",
-		"1 tablespoon water"
-	],
-	"directions": [
-		"Place warm water in the bowl of a stand mixer. Sprinkle with yeast. Let yeast dissolve for 10 minutes. Add sugar and bread flour. Sprinkle with salt; add 6 tablespoons butter. Attach the bowl to the stand mixer. Mix dough with the dough hook just until butter is completely kneaded in and the dough forms a ball and pulls away cleanly from the sides of the bowl, 3 or 4 minutes.",
-		"Transfer dough to a work surface and form into a semi-smooth ball. Place dough back in the mixer bowl; cover. Let rise in a warm spot until doubled, about 2 hours.",
-		"Transfer dough to a lightly floured work surface. Push and press dough to deflate it, and form it into a rectangle. Fold into thirds by lifting one end over the middle third, and folding the other side onto the middle. Wrap in plastic wrap. Place on a rimmed baking sheet lined with a silicone mat. Refrigerate until chilled through, about 1 hour.",
-		"Cut 2 sticks butter in half lengthwise and place slightly apart from each other on a length of parchment paper long enough to fold over the butter. Fold the parchment paper over the butter. Press butter down. Roll out with a rolling pin to a square about 8x8 inches. Refrigerate until a little chilled and just barely flexible, 10 or 15 minutes.",
-		"Roll dough out into a rectangle slightly wider than the butter slab and just over twice as long. Place butter on one half of the dough leaving about a 1-inch margin from the edge of the dough. Fold the other half of the dough over the butter. Dust work surface and dough with flour as needed.",
-		"Press rolling pin down on dough to create ridges. Then roll out the ridges. Repeat this process. Keep pressing and rolling until dough is about the same size rectangle as you had before you folded it in half, dusting with just a bit of flour as necessary.",
-		"Starting from the short side, fold one-third of dough over middle third. Then fold the other end over to form a small rectangle. Flatten out just slightly with rolling pin. Transfer to the silicone-lined baking sheet; cover with plastic wrap. Refrigerate until chilled, about 30 minutes.",
-		"Transfer dough back to work surface and repeat pressing and rolling technique until dough is the size of the previous larger rectangle. Fold into thirds again, starting from the short side. Press and roll slightly. Transfer back to lined baking sheet. Cover and refrigerate about 15 minutes.",
-		"Roll back out to a large rectangle. This time, fold dough in half. Then press and roll out into a 1/2-inch thick rectangle, using as little flour as needed to keep dough from sticking.",
-		"Cut dough in half lengthwise using a pastry wheel or pizza cutter. Dust one piece with flour and roll out to a rectangle about 1/4 to 1/8 inch thick. Starting from one corner, cut the dough diagonally crosswise into 8 triangles using a pastry wheel. Starting with the bottom end of each triangle, roll each up toward the tip to form the croissant with the seam at the bottom. If necessary, use a bit of water to seal the tip to the rolled croissant.",
-		"Repeat with the other half of the dough.",
-		"Place shaped croissants on baking sheets lined with silicone mats. Whisk together egg and 1 tablespoon water to make the egg wash. Brush croissants with egg wash. Place in a warm area to allow them to rise, about 45 to 60 minutes.",
-		"Preheat the oven to 400 degrees F (200 degrees C). Brush croissants gently but thoroughly again with egg wash.",
-		"Bake in the preheated oven until beautifully browned, about 25 minutes. Transfer to a cooling rack. Cool to room temperature before serving.\n\n\n\n\n\n\n<img\nsrc=\"https://www.allrecipes.com/thmb/LPBETDhgapnhj182dYjLon--Svo=/2250x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/4674617-254ac8be197f4192800fd6f2eecacc4b.jpg\"\nwidth=\"2500\"\nheight=\"1667\"\nclass=\"img--noscript universal-image__image\"\n/>"
-	],
-	"nutritionFacts": [
-		{
-			"name": "Calories",
-			"value": "532"
-		},
-		{
-			"name": "Fat",
-			"value": "33g"
-		},
-		{
-			"name": "Carbs",
-			"value": "50g"
-		},
-		{
-			"name": "Protein",
-			"value": "9g"
-		}
-	]
+  "url": "https://www.allrecipes.com/recipe/261911/chef-johns-croissants/",
+  "scrapedType": "recipe",
+  "title": "Chef John's Croissants",
+  "breadcrumbs": [
+    "Bread",
+    "Yeast Bread Recipes"
+  ],
+  "rating": "4.5",
+  "author": {
+    "name": "Chef John",
+    "url": "https://www.allrecipes.com/cook/foodwisheswithchefjohn"
+  },
+  "summary": "I wouldn't describe making homemade croissants as easy since there are multiple steps, and it does take at least half a day. But it's really not that hard either; and certainly simpler than flying to Paris, which is the only other way to enjoy these amazing pastries. This croissant recipe, with a helpful video, was adapted from one by Bruno Albouze, from The Real Deal (which he is).",
+  "reviews": "",
+  "photos": [
+    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https://images.media-allrecipes.com/userphotos/9135335.jpg&q=60&c=sc&orient=true&w=160&poi=auto&h=90",
+    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https://images.media-allrecipes.com/userphotos/9011803.jpg&q=60&c=sc&orient=true&w=160&poi=auto&h=90",
+    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https://images.media-allrecipes.com/userphotos/8765419.jpg&q=60&c=sc&orient=true&w=160&poi=auto&h=90",
+    "https://imagesvc.meredithcorp.io/v3/mm/image?url=https://images.media-allrecipes.com/userphotos/8732830.jpg&q=60&c=sc&orient=true&w=160&poi=auto&h=90"
+  ],
+  "Prep Time": "30 mins",
+  "Cook Time": "25 mins",
+  "Additional Time": "3 hrs",
+  "Total Time": "3 hrs 55 mins",
+  "Servings": "8",
+  "Yield": "12\nto 16 croissants",
+  "ingredients": [
+    "1 cup warm water (100 degrees F or 38 degrees C)",
+    "1 (.25 ounce) package active dry yeast",
+    "¼ cup granulated white sugar",
+    "3 ½ cups unbleached bread flour",
+    "3 teaspoons kosher salt",
+    "6 tablespoons butter, room temperature, cut into pieces",
+    "2 sticks unsalted European-style butter",
+    "1  egg",
+    "1 tablespoon water"
+  ],
+  "directions": [
+    "Place warm water in the bowl of a stand mixer. Sprinkle with yeast. Let yeast dissolve for 10 minutes. Add sugar and bread flour. Sprinkle with salt; add 6 tablespoons butter. Attach the bowl to the stand mixer. Mix dough with the dough hook just until butter is completely kneaded in and the dough forms a ball and pulls away cleanly from the sides of the bowl, 3 or 4 minutes.",
+    "Transfer dough to a work surface and form into a semi-smooth ball. Place dough back in the mixer bowl; cover. Let rise in a warm spot until doubled, about 2 hours.",
+    "Transfer dough to a lightly floured work surface. Push and press dough to deflate it, and form it into a rectangle. Fold into thirds by lifting one end over the middle third, and folding the other side onto the middle. Wrap in plastic wrap. Place on a rimmed baking sheet lined with a silicone mat. Refrigerate until chilled through, about 1 hour.",
+    "Cut 2 sticks butter in half lengthwise and place slightly apart from each other on a length of parchment paper long enough to fold over the butter. Fold the parchment paper over the butter. Press butter down. Roll out with a rolling pin to a square about 8x8 inches. Refrigerate until a little chilled and just barely flexible, 10 or 15 minutes.",
+    "Roll dough out into a rectangle slightly wider than the butter slab and just over twice as long. Place butter on one half of the dough leaving about a 1-inch margin from the edge of the dough. Fold the other half of the dough over the butter. Dust work surface and dough with flour as needed.",
+    "Press rolling pin down on dough to create ridges. Then roll out the ridges. Repeat this process. Keep pressing and rolling until dough is about the same size rectangle as you had before you folded it in half, dusting with just a bit of flour as necessary.",
+    "Starting from the short side, fold one-third of dough over middle third. Then fold the other end over to form a small rectangle. Flatten out just slightly with rolling pin. Transfer to the silicone-lined baking sheet; cover with plastic wrap. Refrigerate until chilled, about 30 minutes.",
+    "Transfer dough back to work surface and repeat pressing and rolling technique until dough is the size of the previous larger rectangle. Fold into thirds again, starting from the short side. Press and roll slightly. Transfer back to lined baking sheet. Cover and refrigerate about 15 minutes.",
+    "Roll back out to a large rectangle. This time, fold dough in half. Then press and roll out into a 1/2-inch thick rectangle, using as little flour as needed to keep dough from sticking.",
+    "Cut dough in half lengthwise using a pastry wheel or pizza cutter. Dust one piece with flour and roll out to a rectangle about 1/4 to 1/8 inch thick. Starting from one corner, cut the dough diagonally crosswise into 8 triangles using a pastry wheel. Starting with the bottom end of each triangle, roll each up toward the tip to form the croissant with the seam at the bottom. If necessary, use a bit of water to seal the tip to the rolled croissant.",
+    "Repeat with the other half of the dough.",
+    "Place shaped croissants on baking sheets lined with silicone mats. Whisk together egg and 1 tablespoon water to make the egg wash. Brush croissants with egg wash. Place in a warm area to allow them to rise, about 45 to 60 minutes.",
+    "Preheat the oven to 400 degrees F (200 degrees C). Brush croissants gently but thoroughly again with egg wash.",
+    "Bake in the preheated oven until beautifully browned, about 25 minutes. Transfer to a cooling rack. Cool to room temperature before serving.\n\n\n\n\n\n\n<img\nsrc=\"https://www.allrecipes.com/thmb/LPBETDhgapnhj182dYjLon--Svo=/2250x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/4674617-254ac8be197f4192800fd6f2eecacc4b.jpg\"\nwidth=\"2500\"\nheight=\"1667\"\nclass=\"img--noscript universal-image__image\"\n/>"
+  ],
+  "nutritionFacts": [
+    {
+      "name": "Calories",
+      "value": "532"
+    },
+    {
+      "name": "Fat",
+      "value": "33g"
+    },
+    {
+      "name": "Carbs",
+      "value": "50g"
+    },
+    {
+      "name": "Protein",
+      "value": "9g"
+    }
+  ]
 }
 ```
 
@@ -232,7 +234,7 @@ The structure of each item in Allrecipes looks like this:
       "image": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2019%2F07%2F2432913.jpg",
       "title": "Buttery Garlic Green Beans",
       "url": "https://www.allrecipes.com/recipe/230103/buttery-garlic-green-beans/",
-      "description": "This is a fail-proof way to dress up fresh greens beans using butter, garlic, and lemon pepper.  Reviewer Sarah Jo says, \"I usually double this recipe because my family inhales it.\""
+      "description": "This is a fail-proof way to dress up fresh greens beans using butter, garlic, and lemon pepper.  Reviewer Sarah Jo says, \"I usually double this recipe because my family inhales it.\""
     },
     {
       "image": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F2054794.jpg",
@@ -490,7 +492,7 @@ The structure of each item in Allrecipes looks like this:
       "image": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F7795273.jpg",
       "title": "Sous Vide Mahi Mahi with Jalapeno-Lime Butter",
       "url": "https://www.allrecipes.com/recipe/279168/sous-vide-mahi-mahi-with-jalapeno-lime-butter/",
-      "description": "\"Traditional methods of cooking mahi mahi can leave it dry, but cooking it sous vide in its own juices ensures tender and moist results,\" says recipe creator France C.  The jalapeño-lime butter adds bright, zesty flavor to mild mahi mahi."
+      "description": "\"Traditional methods of cooking mahi mahi can leave it dry, but cooking it sous vide in its own juices ensures tender and moist results,\" says recipe creator France C.  The jalapeño-lime butter adds bright, zesty flavor to mild mahi mahi."
     },
     {
       "image": "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fimages.media-allrecipes.com%2Fuserphotos%2F1984031.jpg",
@@ -536,4 +538,4 @@ The structure of each item in Allrecipes looks like this:
 ```
 
 ## Contact
-Please visit us through [epctex.com](https://epctex.com) to see all the products that is available for you. If you are looking for any custom integration or so, please reach out to us through the chat box in [epctex.com](https://epctex.com). In need of support? [devops@epctex.com](mailto:devops@epctex.com) is at your service.
+Please visit us through [epctex.com](https://epctex.com) to see all the products that are available for you. If you are looking for any custom integration or so, please reach out to us through the chat box in [epctex.com](https://epctex.com). In need of support? [devops@epctex.com](mailto:devops@epctex.com) is at your service.
